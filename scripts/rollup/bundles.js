@@ -78,7 +78,7 @@ const bundles = [
     externals: [],
   },
 
-  /******* Browser *******/
+  /******* React Browser *******/
 
   {
     bundleTypes: [BROWSER_ESM],
@@ -103,6 +103,16 @@ const bundles = [
     ],
     moduleType: RENDERER,
     entry: 'react-dom',
+    global: 'ReactDOM',
+    externals: ['react'],
+  },
+
+  /******* React DOM Browser *******/
+
+  {
+    bundleTypes: [BROWSER_ESM],
+    moduleType: RENDERER,
+    entry: 'react-dom/src/client/ReactDOM',
     global: 'ReactDOM',
     externals: ['react'],
   },

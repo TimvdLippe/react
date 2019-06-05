@@ -9,7 +9,7 @@
 module.exports = [
   {
     shortName: 'dom',
-    entryPoints: ['react-dom', 'react-dom/unstable-fizz.node'],
+    entryPoints: ['react-dom', 'react-dom/src/client/ReactDOM', 'react-dom/unstable-fizz.node'],
     isFlowTyped: true,
     isFizzSupported: true,
   },

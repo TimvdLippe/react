@@ -153,6 +153,13 @@ function getBabelConfig(updateBabelOptions, bundleType, filename) {
           require('../babel/wrap-warning-with-env-check'),
         ]),
       });
+    case BROWSER_ESM:
+      return Object.assign({}, options, {
+        plugins: options.plugins.concat([
+          // Minify invariant messages
+          require('../error-codes/transform-error-messages'),
+        ]),
+      });
     default:
       return options;
   }
