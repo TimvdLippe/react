@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script type="module">
+    import {createElement} from "../../build/dist/react/esm/React.esm.browser.js";
+    import ReactDOM from "../../build/dist/react-dom/esm/ReactDOM.esm.browser.js";
+    import {ParentComponent} from './parent-component.js';
+    
+    const domContainer = document.querySelector('#parent_component_container');
+    ReactDOM.render(createElement(ParentComponent), domContainer);
+</script>
+<div id="parent_component_container"></div>
