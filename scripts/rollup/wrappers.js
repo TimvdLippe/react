@@ -18,6 +18,7 @@ const RN_OSS_PROFILING = Bundles.bundleTypes.RN_OSS_PROFILING;
 const RN_FB_DEV = Bundles.bundleTypes.RN_FB_DEV;
 const RN_FB_PROD = Bundles.bundleTypes.RN_FB_PROD;
 const RN_FB_PROFILING = Bundles.bundleTypes.RN_FB_PROFILING;
+const BROWSER_ESM = Bundles.bundleTypes.BROWSER_ESM;
 
 const RECONCILER = Bundles.moduleTypes.RECONCILER;
 
@@ -52,6 +53,15 @@ ${source}`;
 
   /***************** UMD_PROFILING *****************/
   [UMD_PROFILING](source, globalName, filename, moduleType) {
+    return `/** @license React v${reactVersion}
+ * ${filename}
+ *
+${license}
+ */
+${source}`;
+  },
+
+  [BROWSER_ESM](source, globalName, filename, moduleType) {
     return `/** @license React v${reactVersion}
  * ${filename}
  *

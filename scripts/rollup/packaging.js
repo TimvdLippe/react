@@ -25,6 +25,7 @@ const {
   RN_FB_DEV,
   RN_FB_PROD,
   RN_FB_PROFILING,
+  BROWSER_ESM,
 } = Bundles.bundleTypes;
 
 function getPackageName(name) {
@@ -47,6 +48,8 @@ function getBundleOutputPaths(bundleType, filename, packageName) {
         `build/node_modules/${packageName}/umd/${filename}`,
         `build/dist/${filename}`,
       ];
+    case BROWSER_ESM:
+      return [`build/dist/${packageName}/esm/${filename}`];
     case FB_WWW_DEV:
     case FB_WWW_PROD:
     case FB_WWW_PROFILING:

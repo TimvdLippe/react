@@ -16,6 +16,7 @@ const bundleTypes = {
   RN_FB_DEV: 'RN_FB_DEV',
   RN_FB_PROD: 'RN_FB_PROD',
   RN_FB_PROFILING: 'RN_FB_PROFILING',
+  BROWSER_ESM: 'BROWSER_ESM',
 };
 
 const {
@@ -34,6 +35,7 @@ const {
   RN_FB_DEV,
   RN_FB_PROD,
   RN_FB_PROFILING,
+  BROWSER_ESM,
 } = bundleTypes;
 
 const moduleTypes = {
@@ -72,6 +74,16 @@ const bundles = [
     ],
     moduleType: ISOMORPHIC,
     entry: 'react',
+    global: 'React',
+    externals: [],
+  },
+
+  /******* Browser *******/
+
+  {
+    bundleTypes: [BROWSER_ESM],
+    moduleType: ISOMORPHIC,
+    entry: 'react/src/React',
     global: 'React',
     externals: [],
   },

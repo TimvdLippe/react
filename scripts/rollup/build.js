@@ -51,6 +51,7 @@ const {
   RN_FB_DEV,
   RN_FB_PROD,
   RN_FB_PROFILING,
+  BROWSER_ESM,
 } = Bundles.bundleTypes;
 
 function parseRequestedNames(names, toCase) {
@@ -199,6 +200,8 @@ function getFormat(bundleType) {
     case RN_FB_PROD:
     case RN_FB_PROFILING:
       return `cjs`;
+    case BROWSER_ESM:
+      return `es`;
   }
 }
 
@@ -230,6 +233,8 @@ function getFilename(name, globalName, bundleType) {
     case RN_FB_PROFILING:
     case RN_OSS_PROFILING:
       return `${globalName}-profiling.js`;
+    case BROWSER_ESM:
+      return `${globalName}.esm.browser.js`;
   }
 }
 
@@ -240,6 +245,7 @@ function isProductionBundleType(bundleType) {
     case FB_WWW_DEV:
     case RN_OSS_DEV:
     case RN_FB_DEV:
+    case BROWSER_ESM:
       return false;
     case UMD_PROD:
     case NODE_PROD:
@@ -269,6 +275,7 @@ function isProfilingBundleType(bundleType) {
     case RN_OSS_PROD:
     case UMD_DEV:
     case UMD_PROD:
+    case BROWSER_ESM:
       return false;
     case FB_WWW_PROFILING:
     case NODE_PROFILING:
@@ -470,7 +477,8 @@ async function createBundle(bundle, bundleType) {
   const shouldBundleDependencies =
     bundleType === UMD_DEV ||
     bundleType === UMD_PROD ||
-    bundleType === UMD_PROFILING;
+    bundleType === UMD_PROFILING ||
+    bundleType === BROWSER_ESM;
   const peerGlobals = Modules.getPeerGlobals(bundle.externals, bundleType);
   let externals = Object.keys(peerGlobals);
   if (!shouldBundleDependencies) {
@@ -657,7 +665,8 @@ async function buildEverything() {
       [bundle, RN_OSS_PROFILING],
       [bundle, RN_FB_DEV],
       [bundle, RN_FB_PROD],
-      [bundle, RN_FB_PROFILING]
+      [bundle, RN_FB_PROFILING],
+      [bundle, BROWSER_ESM]
     );
   }
 

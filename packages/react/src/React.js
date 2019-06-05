@@ -123,4 +123,54 @@ if (enableJSXTransformAPI) {
   }
 }
 
+const {
+  Children,
+  Fragment,
+  Profiler,
+  StrictMode,
+  Suspense,
+  version,
+  unstable_withSuspenseConfig,
+  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,
+} = React;
+
+const React_createElement = React.createElement;
+const React_cloneElement = React.cloneElement;
+const React_createFactory = createFactory;
+const React_isValidElement = isValidElement;
+
+export {
+  Children,
+  createRef,
+  Component,
+  PureComponent,
+  createContext,
+  forwardRef,
+  lazy,
+  memo,
+  error,
+  warn,
+  useCallback,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useDebugValue,
+  useLayoutEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+  Fragment,
+  Profiler,
+  StrictMode,
+  Suspense,
+  React_createElement as createElement,
+  React_cloneElement as cloneElement,
+  React_createFactory as createFactory,
+  React_isValidElement as isValidElement,
+  version,
+  unstable_withSuspenseConfig,
+  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,
+};
+
 export default React;

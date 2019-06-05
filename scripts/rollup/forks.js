@@ -46,7 +46,7 @@ const forks = Object.freeze({
   // Without this fork, importing `shared/ReactSharedInternals` inside
   // the `react` package itself would not work due to a cyclical dependency.
   'shared/ReactSharedInternals': (bundleType, entry, dependencies) => {
-    if (entry === 'react') {
+    if (entry.split('/')[0] === 'react') {
       return 'react/src/ReactSharedInternals';
     }
     if (dependencies.indexOf('react') === -1) {
