@@ -128,15 +128,24 @@ export function setValueForProperty(
   value: mixed,
   isCustomComponentTag: boolean,
 ) {
-  const propertyInfo = getPropertyInfo(name);
+  let propertyInfo = getPropertyInfo(name);
+  let mustUseProperty = false;
   if (shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag)) {
     return;
   }
   if (shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag)) {
     value = null;
   }
+  if (name[0] === '.') {
+    const propertyName = name.substr(1);
+    mustUseProperty = true;
+    propertyInfo = {
+      propertyName,
+      type: typeof (node: any)[propertyName],
+      attributeName: propertyName,
+    };
   // If the prop isn't in the special list, treat it as a simple attribute.
-  if (isCustomComponentTag || propertyInfo === null) {
+  } else if (propertyInfo === null) {
     if (isAttributeNameSafe(name)) {
       const attributeName = name;
       if (value === null) {
@@ -146,9 +155,10 @@ export function setValueForProperty(
       }
     }
     return;
+  } else {
+    mustUseProperty = propertyInfo.mustUseProperty;
   }
-  const {mustUseProperty} = propertyInfo;
-  if (mustUseProperty) {
+  if (isCustomComponentTag && mustUseProperty) {
     const {propertyName} = propertyInfo;
     if (value === null) {
       const {type} = propertyInfo;
