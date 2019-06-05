@@ -95,6 +95,7 @@
   },
   "scripts": {
     "build": "node ./scripts/rollup/build.js",
+    "fix-import": "sed -i \"s/import React from 'react'/import React from '..\\/..\\/react\\/esm\\/React.esm.browser.js'/\" build/dist/react-dom/esm/ReactDOM.esm.browser.js",
     "linc": "node ./scripts/tasks/linc.js",
     "lint": "node ./scripts/tasks/eslint.js",
     "lint-build": "node ./scripts/rollup/validate/index.js",
