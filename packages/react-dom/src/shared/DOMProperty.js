@@ -177,7 +177,19 @@ export function shouldRemoveAttribute(
   return false;
 }
 
-export function getPropertyInfo(name: string): PropertyInfo | null {
+export function getPropertyInfo(name: string, node: Element, isCustomComponentTag: boolean,): PropertyInfo | null {
+  if (isCustomComponentTag) {
+    const type = typeof node[name];
+    return {
+      acceptsBooleans: (type === 'boolean'),
+      type,
+      mustUseProperty: true,
+      propertyName: name,
+      attributeName: name,
+      attributeNamespace: null,
+      sanitizeURL: false,
+    }
+  }
   return properties.hasOwnProperty(name) ? properties[name] : null;
 }
 

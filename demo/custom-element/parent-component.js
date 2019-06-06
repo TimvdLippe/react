@@ -12,7 +12,7 @@ export class ParentComponent extends React.Component {
             'div',
             {},
             [
-                createElement('child-component', {key: 'child', ".value": this.state.childChange}),
+                createElement('child-component', {key: 'child', "value": this.state.childChange}),
                 createElement('div', {key: 'text'}, 'I am a span'),
                 createElement('button', {key: 'button', onClick: () => {
                     this.setState({
