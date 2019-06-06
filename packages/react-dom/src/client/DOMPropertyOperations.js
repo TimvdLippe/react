@@ -179,7 +179,7 @@ export function setValueForProperty(
     }
     if (attributeNamespace) {
       node.setAttributeNS(attributeNamespace, attributeName, attributeValue);
-    } else {
+    } else if (!isCustomComponentTag || isAttributeNameSafe(attributeName)){
       node.setAttribute(attributeName, attributeValue);
     }
   }
