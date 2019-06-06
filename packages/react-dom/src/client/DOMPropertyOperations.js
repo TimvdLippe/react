@@ -150,7 +150,7 @@ export function setValueForProperty(
   const {mustUseProperty} = propertyInfo;
   if (mustUseProperty) {
     const {propertyName} = propertyInfo;
-    if (value === null) {
+    if (!isCustomComponentTag && value === null) {
       const {type} = propertyInfo;
       (node: any)[propertyName] = type === BOOLEAN ? false : '';
     } else {

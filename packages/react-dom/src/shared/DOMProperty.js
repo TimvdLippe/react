@@ -183,7 +183,7 @@ export function getPropertyInfo(name: string, node: Element, isCustomComponentTa
     return {
       acceptsBooleans: (type === 'boolean'),
       type,
-      mustUseProperty: true,
+      mustUseProperty: name in node,
       propertyName: name,
       attributeName: name,
       attributeNamespace: null,

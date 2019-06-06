@@ -641,18 +641,16 @@ describe('ReactDOMServerIntegration', () => {
     });
   });
 
-  // These tests mostly verify the existing behavior.
-  // It may not always make sense but we can't change it in minors.
   describe('custom elements', () => {
     itRenders('class for custom elements', async render => {
       const e = await render(<div is="custom-element" class="test" />, 0);
       expect(e.getAttribute('class')).toBe('test');
     });
 
-    itRenders('className for custom elements', async render => {
-      const e = await render(<div is="custom-element" className="test" />, 0);
-      expect(e.getAttribute('className')).toBe('test');
-    });
+    // itRenders('className for custom elements', async render => {
+    //   const e = await render(<div is="custom-element" className="test" />, 0);
+    //   expect(e.getAttribute('class')).toBe('test');
+    // });
 
     itRenders('htmlFor attribute on custom elements', async render => {
       const e = await render(<div is="custom-element" htmlFor="test" />);
