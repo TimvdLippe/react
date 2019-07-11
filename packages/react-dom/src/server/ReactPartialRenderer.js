@@ -364,14 +364,7 @@ function createOpenTagMarkup(
     if (propKey === STYLE) {
       propValue = createMarkupForStyles(propValue);
     }
-    let markup = null;
-    if (isCustomComponent(tagLowercase, props)) {
-      if (!RESERVED_PROPS.hasOwnProperty(propKey)) {
-        markup = createMarkupForCustomAttribute(propKey, propValue);
-      }
-    } else {
-      markup = createMarkupForProperty(propKey, propValue);
-    }
+    let markup = createMarkupForProperty(propKey, propValue);
     if (markup) {
       ret += ' ' + markup;
     }
